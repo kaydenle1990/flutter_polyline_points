@@ -25,7 +25,8 @@ class PolylinePoints {
       bool avoidHighways = false,
       bool avoidTolls = false,
       bool avoidFerries = true,
-      bool optimizeWaypoints = false}) async {
+      bool optimizeWaypoints = false,
+      Map<String, String>? header}) async {
     return await util.getRouteBetweenCoordinates(
         googleApiKey,
         origin,
@@ -35,7 +36,8 @@ class PolylinePoints {
         avoidHighways,
         avoidTolls,
         avoidFerries,
-        optimizeWaypoints);
+        optimizeWaypoints,
+        header);
   }
 
   /// Decode and encoded google polyline
