@@ -21,7 +21,8 @@ class NetworkUtil {
       bool avoidHighways,
       bool avoidTolls,
       bool avoidFerries,
-      bool optimizeWaypoints) async {
+      bool optimizeWaypoints,
+      Map<String, String>? header) async {
     String mode = travelMode.toString().replaceAll('TravelMode.', '');
     PolylineResult result = PolylineResult();
     var params = {
@@ -46,7 +47,7 @@ class NetworkUtil {
         Uri.https("maps.googleapis.com", "maps/api/directions/json", params);
 
     // print('GOOGLE MAPS URL: ' + url);
-    var response = await http.get(uri);
+    var response = await http.get(uri, headers: header);
     if (response.statusCode == 200) {
       var parsedJson = json.decode(response.body);
       result.status = parsedJson["status"];
